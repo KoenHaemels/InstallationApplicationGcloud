@@ -1,15 +1,14 @@
 {
-  "variables": {
-        "Test": "{{env `PROJECT_ID_GCLOUD`}}",
-        "Test2": "{{env `$PROJECT_ID_GCLOUD`}}",
-        "Test3": "{{env `{$PROJECT_ID_GCLOUD}`}}"
-    },
   "provisioners": [
     {
       "type": "shell",
       "script": "start.sh",
       "pause_before": "10s"
-    }
+    },
+    {  
+      "type": "file",
+      "source": "/var/InstallationApplicationGcloud",
+      "destination": "/var"
   ],
 
   "builders": [
