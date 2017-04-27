@@ -1,20 +1,16 @@
 {
   "provisioners": [
     {  
-      "type": "shell-local",
-      "command": "mkdir /var/InstallationApplicationGcloud"
-    },
-    {  
       "type": "file",
       "source": "/var/InstallationApplicationGcloud",
       "destination": "/var"
     },
     {
+      "type": "shell",
       "inline": [
         "cd /var/InstallationApplicationGcloud",
         "./main.sh"
-      ],
-      "type": "shell"
+      ]
     }
   ],
 
