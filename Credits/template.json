@@ -6,11 +6,12 @@
       "destination": "/var"
     },
     {
-      "type": "shell",
-      "script": "./main.sh",
-      "pause_before": "10s"
+      "inline": [
+        "cd /var/InstallationApplicationGcloud",
+        "./main.sh"
+      ],
+      "type": "shell"
     }
-
   ],
 
   "builders": [
