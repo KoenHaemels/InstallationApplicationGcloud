@@ -2,13 +2,13 @@
   "provisioners": [
     {  
       "type": "file",
-      "source": "/var/InstallationApplicationGcloud",
+      "source": "/Credits",
       "destination": "/etc"
     },
     {
       "type": "shell",
       "inline": [
-        "cd /var/InstallationApplicationGcloud",
+        "cd /etc/InstallationApplicationGcloud",
         "./main.sh"
       ]
     }
