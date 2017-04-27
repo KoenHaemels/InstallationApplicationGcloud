@@ -9,6 +9,7 @@
       "type": "file",
       "source": "/var/InstallationApplicationGcloud",
       "destination": "/var"
+    }
   ],
 
   "builders": [
