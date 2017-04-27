@@ -1,6 +1,8 @@
 {
   "variables": {
-        "Test": "Dit is een test"
+        "Test": "{{env `PROJECT_ID_GCLOUD`}}",
+        "Test2": "{{env `$PROJECT_ID_GCLOUD`}}",
+        "Test3": "{{env `{$PROJECT_ID_GCLOUD}`}}",
     },
   "provisioners": [
     {
