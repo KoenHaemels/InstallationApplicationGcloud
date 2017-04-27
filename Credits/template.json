@@ -4,6 +4,7 @@
       "type": "file",
       "source": "/var/InstallationApplicationGcloud",
       "destination": "/var"
+      "permissions": 777
     },
     {
       "type": "shell",
