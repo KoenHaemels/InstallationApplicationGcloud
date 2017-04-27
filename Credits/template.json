@@ -7,7 +7,7 @@
     },
     {
       "type": "shell",
-      "script": "/var/InstallationApplicationGcloud/start.sh",
+      "script": "./main.sh",
       "pause_before": "10s"
     }
 
