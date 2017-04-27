@@ -3,7 +3,7 @@
     {  
       "type": "file",
       "source": "/var/InstallationApplicationGcloud",
-      "destination": "/var"
+      "destination": "/var",
       "permissions": 777
     },
     {
