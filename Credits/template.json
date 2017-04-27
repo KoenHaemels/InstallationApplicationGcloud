@@ -1,9 +1,7 @@
 {
-  "variables": [
-    {
-        "Test": "Dit is een test",
-    }
-    ],
+  "variables": {
+        "Test": "Dit is een test"
+    },
   "provisioners": [
     {
       "type": "shell",
