@@ -1,0 +1,22 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "start.sh",
+      "pause_before": "10s"
+    }
+  ],
+
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "projectID",
+      "account_file": "accountFILE",
+      "source_image": "ubuntu-1604-xenial-v20170330",
+      "zone": "europe-west1-b",
+      "ssh_username": "sshUSERNAME",
+      "ssh_password": "sshPASSWORD",
+      "image_name": "packer-image-stage"
+    }
+  ]
+}
