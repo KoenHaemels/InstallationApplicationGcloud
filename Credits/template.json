@@ -1,9 +1,10 @@
 {
   "provisioners": [
-    {  
-      "type": "file",
-      "source": "*",
-      "destination": "/etc"
+    {
+      "type": "shell",
+      "inline": [
+        "ls"
+      ]
     },
     {
       "type": "shell",
