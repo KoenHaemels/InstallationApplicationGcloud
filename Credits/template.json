@@ -2,8 +2,8 @@
   "provisioners": [
     {  
       "type": "file",
-      "source": "/var/InstallationApplicationGcloud",
-      "destination": "/var"
+      "source": "var/InstallationApplicationGcloud",
+      "destination": "var/"
     },
     {
       "inline": [
