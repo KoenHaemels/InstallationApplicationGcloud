@@ -20,8 +20,8 @@
   "builders": [
     {
       "type": "googlecompute",
-      "project_id": "projectID",
-      "account_file": "accountFILE",
+      "project_id": "certain-nexus-865",
+      "account_file": "~/.vault_account.json",
       "source_image": "ubuntu-1604-xenial-v20170330",
       "zone": "europe-west1-b",
       "ssh_username": "ubuntu",
