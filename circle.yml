@@ -6,6 +6,8 @@ machine:
     GCLOUD_PROJECT: "certain-nexus-865"
     BUILD: ${CIRCLE_BUILD_NUM}
     PREVIOUSBUILD: ${CIRCLE_PREVIOUS_BUILD_NUM}
+  python:
+    version: 2.7.10
 general:
   branches:
     only:
@@ -15,6 +17,12 @@ dependencies:
   cache_directories:
     - "~/bin"
   pre:
+    # =======================
+    # Installation Packer
+    # =======================
+    - pip install ansible
+    - pip install --upgrade setuptools
+    - echo echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ~/.vault_account.json
     # =======================
     # Installation Packer
     # =======================
@@ -78,6 +86,8 @@ deployment:
   packer:
     branch: master
     commands:
+      #NIEUW
+      
       # Change name to new BUILD ID
       # =======================
       - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml
