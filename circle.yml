@@ -97,7 +97,7 @@ deployment:
       # =======================
       # Rolling update
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b --project=certain-nexus-865 -q
+      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b --project=certain-nexus-865
       # =======================
       # Delete Previous instance
       # =======================
