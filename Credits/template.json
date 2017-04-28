@@ -14,8 +14,7 @@
       "type": "shell",
       "inline": [
         "sudo apt-get install git -y",
-        "cd ..",
-        "cd var/",
+        "cd /var",
         "git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git",
         "cd InstallationApplicationGcloud/",
         "sudo mv ~/account.json Credits/",
