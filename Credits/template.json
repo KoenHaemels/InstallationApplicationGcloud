@@ -2,12 +2,12 @@
   "provisioners": [
     {  
       "type": "file",
-      "source": "/var/InstallationApplicationGcloud/Credits/account.json",
+      "source": "~/InstallationApplicationGcloud/Credits/account.json",
       "destination": "~/"
     },
     {  
       "type": "file",
-      "source": "/var/InstallationApplicationGcloud/Credits/template.json",
+      "source": "~/InstallationApplicationGcloud/Credits/template.json",
       "destination": "~/"
     },
     {
