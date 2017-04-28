@@ -19,7 +19,8 @@
         "cd InstallationApplicationGcloud/",
         "sudo mv ~/account.json Credits/",
         "sudo mv ~/template.json Credits/",
-        "./main.sh"
+        "./main.sh",
+        "sudo rm -r -f Credits/"
       ]
     }
   ],
