@@ -3,7 +3,7 @@
     {  
       "type": "file",
       "source": "Credits/account.json",
-      "destination": "~/"
+      "destination": "~/account.json"
     }
   ],
 
