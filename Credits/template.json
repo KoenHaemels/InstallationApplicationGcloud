@@ -15,7 +15,7 @@
       "inline": [
         "sudo apt-get install git -y",
         "cd /var",
-        "git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git",
+        "sudo git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git",
         "cd InstallationApplicationGcloud/",
         "sudo mv ~/account.json Credits/",
         "sudo mv ~/template.json Credits/",
