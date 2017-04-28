@@ -93,7 +93,7 @@ deployment:
       # =======================
       # Create new instance
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml --account=${CLIENT_EMAIL_GCLOUD}
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml
       # =======================
       # Rolling update
       # =======================
