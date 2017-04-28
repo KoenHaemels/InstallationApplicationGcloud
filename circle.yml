@@ -93,7 +93,7 @@ deployment:
       # =======================
       # Create new instance
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml --project=certain-nexus-865
       # =======================
       # Rolling update
       # =======================
