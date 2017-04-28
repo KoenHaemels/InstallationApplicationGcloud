@@ -4,26 +4,7 @@
       "type": "file",
       "source": "~/InstallationApplicationGcloud/Credits/account.json",
       "destination": "~/"
-    },
-    {  
-      "type": "file",
-      "source": "~/InstallationApplicationGcloud/Credits/template.json",
-      "destination": "~/"
-    },
-    {
-      "type": "shell",
-      "execute_command":"chmod +x {{ .Path }}; sudo '{{ .Path }}'",
-      "inline": [
-        "sudo apt-get install git -y",
-        "cd var/",
-        "git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git",
-        "cd InstallationApplicationGcloud/",
-        "sudo mv ~/account.json Credits/",
-        "sudo mv ~/template.json Credits/",
-        "./main.sh"
-      ]
     }
-    
   ],
 
   "builders": [
