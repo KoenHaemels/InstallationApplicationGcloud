@@ -1,20 +1,15 @@
 {
   "provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-        "ls"
-      ]
-    },
     {  
       "type": "file",
-      "source": "*",
-      "destination": "/etc"
+      "source": "/var/InstallationApplicationGcloud",
+      "destination": "/var"
     },
     {
       "type": "shell",
+      "execute_command":"chmod +x {{ .Path }}; sudo '{{ .Path }}'; sh '{{ .Path }}'",
       "inline": [
-        "cd /etc/InstallationApplicationGcloud",
+        "cd /var/InstallationApplicationGcloud",
         "./main.sh"
       ]
     }
