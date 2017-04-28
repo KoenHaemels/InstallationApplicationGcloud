@@ -3,7 +3,24 @@
     {  
       "type": "file",
       "source": "Credits/account.json",
-      "destination": "/var/account.json"
+      "destination": "~/account.json"
+    },
+    {  
+      "type": "file",
+      "source": "Credits/template.json",
+      "destination": "~/template.json"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get install git -y",
+        "cd var/",
+        "git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git",
+        "cd InstallationApplicationGcloud/",
+        "sudo mv ~/account.json Credits/",
+        "sudo mv ~/template.json Credits/",
+        "./main.sh"
+      ]
     }
   ],
 
