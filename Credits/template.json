@@ -9,7 +9,7 @@
       "type": "shell",
       "execute_command":"chmod +x {{ .Path }}; sudo '{{ .Path }}'; sh '{{ .Path }}'",
       "inline": [
-        "sudo mv /home/ubuntu/InstallationApplicatioGcloud /var",
+        "sudo mv /home/ubuntu/InstallationApplicationGcloud /var",
         "bash /var/InstallationApplicationGcloud/main.sh"
       ]
     }
