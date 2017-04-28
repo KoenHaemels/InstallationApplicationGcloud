@@ -3,15 +3,7 @@
     {  
       "type": "file",
       "source": "/var/InstallationApplicationGcloud",
-      "destination": "/home/ubuntu"
-    },
-    {
-      "type": "shell",
-      "execute_command":"chmod +x {{ .Path }}; sudo '{{ .Path }}'; sh '{{ .Path }}'",
-      "inline": [
-        "sudo mv /home/ubuntu/InstallationApplicationGcloud /var",
-        "bash /var/InstallationApplicationGcloud/main.sh"
-      ]
+      "destination": "~/"
     }
   ],
 
