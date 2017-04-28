@@ -58,7 +58,7 @@ dependencies:
     #- /bin/sed -i "s|sshUSERNAME|${SSH_USERNAME_GCLOUD}|g" Credits/template.json
     #- /bin/sed -i "s|sshPASSWORD|${SSH_PASSWORD_GCLOUD}|g" Credits/template.json
     #- sudo rm -r -f Credits/account.json
-    - sudo mv ${HOME}/gcloud-service-key.json Credits/account.json
+    - sudo cp ${HOME}/gcloud-service-key.json Credits/account.json
     - /bin/sed -i "s|accountFILE|Credits/account.json|g" Credits/template.json
     - /bin/sed -i "s/projectID/"${PROJECT_ID_GCLOUD}"/g" Credits/template.json
     # =======================
