@@ -27,9 +27,9 @@ dependencies:
     # Installation GIT + clone repository
     # =======================
     - sudo apt-get install git -y
-    - cd /var
+    - cd ~/
     - git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git
-    - cd InstallationApplicationGcloud/
+    - cd ~/InstallationApplicationGcloud
     # =======================
     # Installation / authentication GCLOUD
     # =======================
