@@ -27,7 +27,8 @@ dependencies:
     # Installation GIT + clone repository
     # =======================
     - sudo apt-get install git -y
-    - cd tmp/
+    - mkdir -p ~/map
+    - cd ~/map
     - git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git
     - cd InstallationApplicationGcloud/
     # =======================
