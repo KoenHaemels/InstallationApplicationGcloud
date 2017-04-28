@@ -27,9 +27,9 @@ dependencies:
     # Installation GIT + clone repository
     # =======================
     - sudo apt-get install git -y
-    - cd ~/
+    - cd tmp/
     - git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git
-    - cd ~/InstallationApplicationGcloud
+    - cd InstallationApplicationGcloud/
     # =======================
     # Installation / authentication GCLOUD
     # =======================
@@ -60,7 +60,6 @@ dependencies:
     - sudo mv ${HOME}/gcloud-service-key.json Credits/account.json
     - /bin/sed -i "s|accountFILE|Credits/account.json|g" Credits/template.json
     - /bin/sed -i "s/projectID/"${PROJECT_ID_GCLOUD}"/g" Credits/template.json
-    - cd ~/
     # =======================
 
 test:
