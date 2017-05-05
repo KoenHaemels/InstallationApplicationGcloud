@@ -1,8 +1,8 @@
-# InstallationApplication
+# InstallationApplicationGcloud
 Please run the main script to install the application
 
 ## How to install
 ```
-cd /InstallationApplication
+cd /InstallationApplicationGcloud
 ./main.sh
 ```
