@@ -43,7 +43,7 @@ dependencies:
     # =======================
     # Delete previous packer image
     # =======================
-    - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-124 -q
+    - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-126 -q
     #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
     # =======================
     # Change credentials
@@ -87,10 +87,10 @@ deployment:
       # =======================
       # Rolling update
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute rolling-updates start --zone europe-west1-b --group=test-instance-groupmanager --template template-file-"${BUILD}" --max-num-concurrent-instances 2 --min-instance-update-time 2m
+      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute rolling-updates start --zone europe-west1-b --group=test-instance-groupmanager --template template-file-"${BUILD}" --max-num-concurrent-instances 1 --min-instance-update-time 3m
       #- sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b --force
       # =======================
       # Delete Previous instance
       # =======================
       #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"${PREVIOUSBUILD}" -q
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-124 -q
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-126 -q
