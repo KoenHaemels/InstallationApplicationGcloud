@@ -51,7 +51,7 @@ dependencies:
     # =======================
     # Delete previous packer image
     # =======================
-    - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-130 -q
+    #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-130 -q
     #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
     # =======================
     # Change credentials
