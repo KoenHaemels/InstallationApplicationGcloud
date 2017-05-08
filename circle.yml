@@ -80,7 +80,7 @@ deployment:
     branch: master
     commands:
       #NIEUW
-      - echo 3 > nummer.txt
+      - expr $(cat nummer.txt) + 1 > nummer.txt
       - git init
       - git add nummer.txt
       - git commit -m "Nummer [ci skip]"
