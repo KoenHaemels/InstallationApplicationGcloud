@@ -1,27 +1,34 @@
 {
   "provisioners": [
-  {
-    "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path$
-    "inline": [
-      "apt-get update",
-      "apt-get upgrade -y",
-      "apt-get install ansible -y"
-
-    ],
-    "inline_shebang": "/bin/sh -x",
-    "type": "shell"
-  },
-      {
-      "type": "ansible-local",
-      "playbook_file": "./playbook.yml"
-  },
+    {  
+      "type": "file",
+      "source": "Credits/account.json",
+      "destination": "~/account.json"
+    },
+    {  
+      "type": "file",
+      "source": "Credits/template.json",
+      "destination": "~/template.json"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get install git -y",
+        "cd /var",
+        "sudo git clone https://github.com/KoenHaemels/InstallationApplicationGcloud.git",
+        "cd InstallationApplicationGcloud/",
+        "sudo mv ~/account.json Credits/",
+        "sudo mv ~/template.json Credits/",
+        "./main.sh"
+      ]
+    }
   ],
 
   "builders": [
     {
       "type": "googlecompute",
-      "project_id": "certain-nexus-865",
-      "account_file": "~/.vault_account.json",
+      "project_id": "projectID",
+      "account_file": "accountFILE",
       "source_image": "ubuntu-1604-xenial-v20170330",
       "zone": "europe-west1-b",
       "ssh_username": "ubuntu",
