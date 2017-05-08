@@ -20,7 +20,6 @@
   <h1>Demo Applicatie</h1>
   <h3>Hostname: <?php echo gethostname(); ?></h3>
   <h4>IP-address: <?php echo getHostByName(getHostName());?></h4>
-	<h3>SUPERNIEUW</h3>
 	<div> 
           <canvas width="150" height="150" data-jdenticon-hash="<?php echo hash('sha256', gethostname()); ?>"></canvas> 
 	    </div>
