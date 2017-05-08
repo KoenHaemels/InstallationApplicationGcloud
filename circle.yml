@@ -80,7 +80,7 @@ deployment:
     branch: master
     commands:
       #NIEUW
-      - 3 > nummer.txt
+      - echo 3 > nummer.txt
       - git add nummer.txt
       - git push -u master
       # Change name to new BUILD ID
