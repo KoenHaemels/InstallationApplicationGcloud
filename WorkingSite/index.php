@@ -39,7 +39,7 @@
 	$dh = opendir($path);
 	$i=1;
 	while (($file = readdir($dh)) !== false) {
-	if($file != "." && $file != ".." && strpos($file, 'log') !== FALSE) {
+	if($file != "." && $file != "..") {
         	echo "<br /> <p>$file</p>";
         	$i++;
     		}
