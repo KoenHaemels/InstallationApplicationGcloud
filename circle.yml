@@ -83,7 +83,7 @@ deployment:
       - echo 3 > nummer.txt
       - git init
       - git add nummer.txt
-      - git commit -m [ci skip]
+      - git commit -m ci skip
       #- git remote add origin ${CIRCLE_REPOSITORY_URL}
       - git push origin master
       # Change name to new BUILD ID
