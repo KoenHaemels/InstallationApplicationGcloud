@@ -21,7 +21,7 @@ dependencies:
     # Installation Packer
     # =======================
     - echo ${APP_env}
-    - APP_env + 1
+    - ${APP_ENV} = 2
     - make build -e APP_ENV=${APP_ENV:-staging}
     - echo ${APP_env}
     - pip install ansible
