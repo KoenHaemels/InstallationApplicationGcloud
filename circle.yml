@@ -20,9 +20,6 @@ dependencies:
     # =======================
     # Installation Packer
     # =======================
-    - "2" > build.txt
-    - git add build.txt
-    - git push master origin
     - pip install ansible
     - pip install --upgrade setuptools
     - echo echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ~/.vault_account.json
@@ -83,6 +80,9 @@ deployment:
     branch: master
     commands:
       #NIEUW
+      - git push --set-upstream origin ${CIRCLE_BRANCH}
+      - git config --global user.email "${EMAIL}"
+      - git config --global user.name "${USERNAME}"
       # Change name to new BUILD ID
       # =======================
       - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml
