@@ -48,11 +48,6 @@ dependencies:
     - sudo apt-get update
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
     # =======================
-    # Delete previous packer image
-    # =======================
-    #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-130 -q
-    #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
-    # =======================
     # Change credentials
     # =======================
     - sudo cp ${HOME}/gcloud-service-key.json Credits/account.json
@@ -105,8 +100,11 @@ deployment:
       # =======================
       # Delete Previous instance
       # =======================
-      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-130 -q
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
+      # =======================
+      # Delete previous packer image
+      # =======================
+      - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
       # =======================
       # Push new buildnumber to github
       # =======================
