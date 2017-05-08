@@ -4,8 +4,7 @@ machine:
   environment:
     PACKER_VERSION: 0.8.1
     GCLOUD_PROJECT: "certain-nexus-865"
-    BUILD: ${CIRCLE_BUILD_NUM}
-    PREVIOUSBUILD: ${CIRCLE_PREVIOUS_BUILD_NUM}
+
   python:
     version: 2.7.10
 general:
@@ -79,18 +78,17 @@ deployment:
   packer:
     branch: master
     commands:
-      #NIEUW
+      # =======================
+      # Buildnumber counter
+      # =======================
       - expr $(cat nummer.txt) + 1 > nummer.txt
-      - git init
-      - git add nummer.txt
-      - git commit -m "Nummer [ci skip]"
-      #- git remote add origin ${CIRCLE_REPOSITORY_URL}
-      - git push origin master
+      - expr $(cat nummer.txt) - 1 > previousnummer.txt
+      # =======================
       # Change name to new BUILD ID
       # =======================
-      - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml
-      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" Credits/template.json
-      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" template.yml
+      - /bin/sed -i "s/template-file/template-file-"$(cat nummer.txt)"/g" template.yml
+      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" Credits/template.json
+      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" template.yml
       # =======================
       # Build new image
       # =======================
@@ -98,14 +96,21 @@ deployment:
       # =======================
       # Create new instance
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml --project=certain-nexus-865
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"$(cat nummer.txt)" --config template.yml --project=certain-nexus-865
       # =======================
       # Rolling update
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute rolling-updates start --zone europe-west1-b --group=test-instance-groupmanager --template template-file-"${BUILD}" --max-num-concurrent-instances 1 --min-instance-update-time 3m
+      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute rolling-updates start --zone europe-west1-b --group=test-instance-groupmanager --template template-file-"$(cat nummer.txt)" --max-num-concurrent-instances 1 --min-instance-update-time 3m
       #- sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b --force
       # =======================
       # Delete Previous instance
       # =======================
-      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"${PREVIOUSBUILD}" -q
+      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
       - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-130 -q
+      # =======================
+      # Push new buildnumber to github
+      # =======================
+      - git init
+      - git add nummer.txt
+      - git commit -m "Nummer [ci skip]"
+      - git push origin master
