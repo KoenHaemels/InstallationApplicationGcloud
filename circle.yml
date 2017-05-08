@@ -20,10 +20,6 @@ dependencies:
     # =======================
     # Installation Packer
     # =======================
-    - echo ${APP_env}
-    - ${APP_ENV} = 2
-    - make build -e APP_ENV=${APP_ENV:-staging}
-    - echo ${APP_env}
     - pip install ansible
     - pip install --upgrade setuptools
     - echo echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ~/.vault_account.json
@@ -70,7 +66,7 @@ test:
     # =======================
     # Run installation of the application
     # =======================
-    - ./main.sh
+    #- ./main.sh
     # =======================
     # Check JSON file
     # =======================
@@ -84,7 +80,9 @@ deployment:
     branch: master
     commands:
       #NIEUW
-      
+      - "2" > build.txt
+      - git add build.txt
+      - git push master origin
       # Change name to new BUILD ID
       # =======================
       - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml
