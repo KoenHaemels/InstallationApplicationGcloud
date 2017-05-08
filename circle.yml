@@ -80,9 +80,9 @@ deployment:
     branch: master
     commands:
       #NIEUW
-      - git push --set-upstream origin ${CIRCLE_REPOSITORY_URL}
-      - git config --global user.email "${EMAIL}"
-      - git config --global user.name "${USERNAME}"
+      - "3" > nummer.txt
+      - git add nummer.txt
+      - git push -u master
       # Change name to new BUILD ID
       # =======================
       - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml
