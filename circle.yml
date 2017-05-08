@@ -20,6 +20,10 @@ dependencies:
     # =======================
     # Installation Packer
     # =======================
+    - echo ${APP_env}
+    - APP_env + 1
+    - make build -e APP_ENV=${APP_ENV:-staging}
+    - echo ${APP_env}
     - pip install ansible
     - pip install --upgrade setuptools
     - echo echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ~/.vault_account.json
