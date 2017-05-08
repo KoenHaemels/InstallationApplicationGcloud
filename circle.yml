@@ -80,7 +80,7 @@ deployment:
     branch: master
     commands:
       #NIEUW
-      - git push --set-upstream origin ${CIRCLE_BRANCH}
+      - git push --set-upstream origin ${CIRCLE_REPOSITORY_URL}
       - git config --global user.email "${EMAIL}"
       - git config --global user.name "${USERNAME}"
       # Change name to new BUILD ID
