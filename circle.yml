@@ -43,7 +43,7 @@ dependencies:
     # =======================
     # Delete previous packer image
     # =======================
-    - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-126 -q
+    - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-128 -q
     #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
     # =======================
     # Change credentials
@@ -93,4 +93,4 @@ deployment:
       # Delete Previous instance
       # =======================
       #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"${PREVIOUSBUILD}" -q
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-126 -q
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-128 -q
