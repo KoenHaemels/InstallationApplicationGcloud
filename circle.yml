@@ -81,7 +81,7 @@ deployment:
       # =======================
       # Delete previous packer image
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
+      #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
       # =======================
       # Build new image
       # =======================
@@ -89,8 +89,8 @@ deployment:
       # =======================
       # Create new instance
       # =======================
-      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"$(cat nummer.txt)" --config template.yml --project=certain-nexus-865
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-12 --config template.yml --project=certain-nexus-865
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"$(cat nummer.txt)" --config template.yml --project=certain-nexus-865
+      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-12 --config template.yml --project=certain-nexus-865
       # =======================
       # Rolling update
       # =======================
@@ -100,7 +100,7 @@ deployment:
       # Delete Previous instance
       # =======================
       #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-11 -q
+      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-11 -q
       # =======================
       # Push new buildnumber to github
       # =======================
