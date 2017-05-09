@@ -3,8 +3,6 @@ machine:
   timezone: Europe/Brussels
   environment:
     PACKER_VERSION: 0.8.1
-    GCLOUD_PROJECT: "certain-nexus-865"
-
   python:
     version: 2.7.10
 general:
@@ -70,7 +68,6 @@ deployment:
       # =======================
       # Buildnumber counter
       # =======================
-      - expr $(cat nummer.txt) + 1 > nummer.txt
       - expr $(cat nummer.txt) - 1 > previousnummer.txt
       # =======================
       # Change name to new BUILD ID
@@ -79,18 +76,17 @@ deployment:
       - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" Credits/template.json
       - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" template.yml
       # =======================
-      # Delete previous packer image
-      # =======================
-      #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
-      # =======================
       # Build new image
       # =======================
       - ~/bin/packer build Credits/template.json
       # =======================
+      # Delete previous packer image
+      # =======================
+      - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
+      # =======================
       # Create new instance
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"$(cat nummer.txt)" --config template.yml --project=certain-nexus-865
-      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-12 --config template.yml --project=certain-nexus-865
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"$(cat nummer.txt)" --config template.yml --project=${PROJECT_ID_GCLOUD}
       # =======================
       # Rolling update
       # =======================
@@ -99,11 +95,11 @@ deployment:
       # =======================
       # Delete Previous instance
       # =======================
-      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
-      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-11 -q
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
       # =======================
       # Push new buildnumber to github
       # =======================
+      - expr $(cat nummer.txt) + 1 > nummer.txt
       - git init
       - git add nummer.txt
       - git commit -m "Nummer [ci skip]"
