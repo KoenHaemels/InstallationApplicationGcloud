@@ -88,7 +88,7 @@ deployment:
       # =======================
       # Delete previous packer image
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
+      #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
       # =======================
       # Build new image
       # =======================
