@@ -89,7 +89,8 @@ deployment:
       # =======================
       # Create new instance
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"$(cat nummer.txt)" --config template.yml --project=certain-nexus-865
+      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"$(cat nummer.txt)" --config template.yml --project=certain-nexus-865
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-11 --config template.yml --project=certain-nexus-865
       # =======================
       # Rolling update
       # =======================
@@ -98,7 +99,7 @@ deployment:
       # =======================
       # Delete Previous instance
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
+      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
       - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-9 -q
       # =======================
       # Push new buildnumber to github
