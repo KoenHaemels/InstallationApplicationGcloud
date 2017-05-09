@@ -68,6 +68,7 @@ deployment:
       # =======================
       # Buildnumber counter
       # =======================
+      - expr $(cat nummer.txt) + 1 > nummer.txt
       - expr $(cat nummer.txt) - 1 > previousnummer.txt
       # =======================
       # Change name to new BUILD ID
@@ -99,7 +100,6 @@ deployment:
       # =======================
       # Push new buildnumber to github
       # =======================
-      - expr $(cat nummer.txt) + 1 > nummer.txt
       - git init
       - git add nummer.txt
       - git commit -m "Nummer [ci skip]"
