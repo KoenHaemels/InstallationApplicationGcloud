@@ -29,7 +29,6 @@ dependencies:
     - wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip
     - unzip packer_0.12.0_linux_amd64.zip
     - mv packer ~/bin/packer
-    - echo PROJECT_ID_GCLOUD
     # =======================
     # Installation GIT + clone repository
     # =======================
