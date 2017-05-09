@@ -86,6 +86,10 @@ deployment:
       - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" Credits/template.json
       - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" template.yml
       # =======================
+      # Delete previous packer image
+      # =======================
+      - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
+      # =======================
       # Build new image
       # =======================
       - ~/bin/packer build Credits/template.json
@@ -102,10 +106,6 @@ deployment:
       # Delete Previous instance
       # =======================
       - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
-      # =======================
-      # Delete previous packer image
-      # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
       # =======================
       # Push new buildnumber to github
       # =======================
