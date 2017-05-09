@@ -99,6 +99,7 @@ deployment:
       # Delete Previous instance
       # =======================
       - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"$(cat previousnummer.txt)" -q
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-9 -q
       # =======================
       # Push new buildnumber to github
       # =======================
