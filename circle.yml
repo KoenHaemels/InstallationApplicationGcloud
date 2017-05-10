@@ -3,6 +3,7 @@ machine:
   timezone: Europe/Brussels
   environment:
     PACKER_VERSION: 0.8.1
+    ZONE: "europe-west1-b"
   python:
     version: 2.7.10
 general:
@@ -74,6 +75,7 @@ deployment:
       # =======================
       - /bin/sed -i "s/template-file/template-file-"$(cat nummer.txt)"/g" template.yml
       - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" Credits/template.json
+      - /bin/sed -i "s|zonename|"${ZONE}"|g" Credits/template.json
       - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" template.yml
       # =======================
       # Build new image
@@ -90,8 +92,8 @@ deployment:
       # =======================
       # Rolling update
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute rolling-updates start --zone europe-west1-b --group=test-instance-groupmanager --template template-file-"$(cat nummer.txt)" --max-num-concurrent-instances 1 --min-instance-update-time 3m
-      #- sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b --force
+      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute rolling-updates start --zone ${ZONE} --group=test-instance-groupmanager --template template-file-"$(cat nummer.txt)" --max-num-concurrent-instances 1 --min-instance-update-time 3m
+      #- sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone ${ZONE} --force
       # =======================
       # Delete Previous instance
       # =======================
@@ -104,3 +106,4 @@ deployment:
       - git add nummer.txt
       - git commit -m "Nummer [ci skip]"
       - git push origin master
+      # =======================
