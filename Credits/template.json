@@ -30,10 +30,10 @@
       "project_id": "projectID",
       "account_file": "accountFILE",
       "source_image": "ubuntu-1604-xenial-v20170330",
-      "zone": "europe-west1-b",
+      "zone": "zonename",
       "ssh_username": "ubuntu",
       "ssh_password": "cvotest",
-      "image_name": "packer-image-stage"
+      "image_name": "imagename"
     }
   ]
 }
