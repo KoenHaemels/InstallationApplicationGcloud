@@ -7,5 +7,5 @@ resources:
     type: template.jinja
     properties:
       name: template-file
-      image: https://www.googleapis.com/compute/v1/projects/certain-nexus-865/global/images/packer-image-stage
+      image: https://www.googleapis.com/compute/v1/projects/certain-nexus-865/global/images/imagename
       machineType: g1-small
