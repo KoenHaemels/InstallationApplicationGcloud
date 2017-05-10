@@ -77,7 +77,7 @@ deployment:
       - /bin/sed -i "s/template-file/template-file-"$(cat nummer.txt)"/g" template.yml
       - /bin/sed -i "s|imagename|"${IMAGE_NAME}"-"$(cat nummer.txt)"|g" Credits/template.json
       - /bin/sed -i "s|zonename|"${ZONE}"|g" Credits/template.json
-      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" template.yml
+      - /bin/sed -i "s|imagename|"${IMAGE_NAME}"-"$(cat nummer.txt)"/g" template.yml
       # =======================
       # Build new image
       # =======================
