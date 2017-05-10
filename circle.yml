@@ -4,6 +4,7 @@ machine:
   environment:
     PACKER_VERSION: 0.8.1
     ZONE: "europe-west1-b"
+    IMAGE_NAME: "packer-image-stage"
   python:
     version: 2.7.10
 general:
@@ -74,7 +75,7 @@ deployment:
       # Change name to new BUILD ID
       # =======================
       - /bin/sed -i "s/template-file/template-file-"$(cat nummer.txt)"/g" template.yml
-      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" Credits/template.json
+      - /bin/sed -i "s|imagename|"${IMAGE_NAME}"-"$(cat nummer.txt)"|g" Credits/template.json
       - /bin/sed -i "s|zonename|"${ZONE}"|g" Credits/template.json
       - /bin/sed -i "s/packer-image-stage/packer-image-stage-"$(cat nummer.txt)"/g" template.yml
       # =======================
@@ -84,7 +85,7 @@ deployment:
       # =======================
       # Delete previous packer image
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"$(cat previousnummer.txt)" -q
+      - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete "${IMAGE_NAME}"-"$(cat previousnummer.txt)" -q
       # =======================
       # Create new instance
       # =======================
